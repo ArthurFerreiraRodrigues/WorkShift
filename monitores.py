@@ -19,6 +19,7 @@ distDays = list(map(int, distDays))
 
 inCharge = 0  # In charge of this especific day
 totalWorkLoad = [0 for i in range(quant)]  # Quantity of days registered / Name
+
 for month in range(monthStart, monthFinish):
     # for weekday->0,2,3 = Monday, Wednesday, Thursday
     for day in range(1, calendar.monthlen(year, month)+1):
@@ -32,4 +33,11 @@ for month in range(monthStart, monthFinish):
             if(inCharge == quant):
                 inCharge = 0
 
-print(work_shift)
+for i in range(quant):
+    print(f"{name[i]} :")
+    for j in range(totalWorkLoad[i]):
+        month = work_shift[i][j][1]
+        year = work_shift[i][j][2]
+        day = work_shift[i][j][0]
+        print(f"\t{day}/{month}/{year} ", end='\n')
+    print("")
